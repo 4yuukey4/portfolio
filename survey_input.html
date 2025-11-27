@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Lägg till kundvärden</title>
+    <link rel="stylesheet" href="dahsborad.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Lägg till kundens värden</h1>
+
+    <form action="save_survey.php" method="POST">
+
+        <label>Personens namn</label>
+        <input type="text" name="person_name" required>
+
+        <label>Synskärpa (ex 1.0)</label>
+        <input type="number" name="vision" step="0.1" min="0" max="5" required>
+
+        <label>Färgtest resultat</label>
+        <input type="text" name="color" required>
+
+        <label>Reaktionstid (ms)</label>
+        <input type="number" name="reaction" required>
+
+        <button type="submit" class="btn">Spara</button>
+    </form>
+
+    <a href="dashboard.html" class="logout-btn">Tillbaka</a>
+</div>
+
+</body>
+</html>
