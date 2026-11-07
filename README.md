@@ -1,11 +1,21 @@
-# Minimal developer portfolio
+# Yusuf Abdi Hassan — Developer Portfolio
 
 React, JavaScript, Vite, React Router, and Lucide icons. Light by default, with an optional session-only dark theme.
+
+## Requirements and installation
+
+Use Node.js 22 LTS and npm. Clone this repository and install the locked dependencies:
+
+```sh
+git clone https://github.com/4yuukey4/portfolio.git
+cd portfolio
+git switch develop
+npm ci
+```
 
 ## Run locally
 
 ```sh
-npm install
 npm run dev
 ```
 
@@ -38,6 +48,35 @@ The contact form validates required fields and the email address, then opens an 
 ## Deploy
 
 Build command: `npm run build`. Output directory: `dist`. Deploy the static output to Vercel or Netlify. SPA rewrites are included for project detail routes. The project editor remains local-only.
+
+Before deployment, run `npm ci`, `npm test`, and `npm run build`. On Vercel, import this repository, select the Vite preset, and use `dist` as the output directory; `vercel.json` handles client routes. On Netlify, import the repository with the same build command and output directory; `public/_redirects` is copied into the build. Select `main` as the production branch after the replacement has been reviewed and approved. `npm run preview` is for local production checks.
+
+GitHub Pages is not configured: it would need a repository base path and client-route handling before deployment. Pushing to GitHub alone does not publish a running site.
+
+## Repository history and workflow
+
+The original PHP survey, login, and dashboard implementation is preserved at `backup/old-portfolio` (commit `df1f9e2`). Its files are removed from the React implementation. The PHP application required a server and database; its authentication and survey endpoints are not part of this static portfolio. Git history is retained, including the original React import commit.
+
+| Branch | Purpose |
+| --- | --- |
+| `main` | Stable production version; update only after explicit review approval |
+| `backup/old-portfolio` | Original implementation; keep unchanged |
+| `develop` | Integration and validation |
+| `feature/portfolio-design` | Layout, typography, styling, and animations |
+| `feature/project-management` | Project cards, progress, and editor work |
+| `feature/github-integration` | Future GitHub API and repository connections |
+| `feature/image-management` | Profile and project images |
+| `feature/project-details` | Detail pages and galleries |
+
+The feature branches start from the integrated React baseline. Existing imported features remain together in their original commit rather than being rewritten into artificial feature history. Future work belongs on the corresponding feature branch, with meaningful Conventional Commits such as `feat: add project progress tracking`. Use additional `codex/` working branches for repository maintenance. Merge completed work into `develop`, run `npm test` and `npm run build`, and show the changes and results for approval before merging or pushing to `main`. Never force-push or delete remote branches without explicit approval.
+
+GitHub Actions runs the tests and production build for pushes to `develop`, `main`, `feature/**`, and `codex/**`, and pull requests targeting `develop` or `main`.
+
+## Secrets and current scope
+
+Never commit passwords, API keys, tokens, private keys, or `.env` files. `.gitignore` excludes environment files, local overrides, dependencies, build output, logs, and common private-key formats. Only a sanitized `.env.example` may be committed. Any `VITE_` environment variable is public in the browser bundle; keep credentials on a server.
+
+The current implementation includes responsive project browsing, detail pages, galleries, local project/image editing, and contact email drafts. Live GitHub API synchronization, numerical progress tracking, shared upload storage, and an authenticated online dashboard remain future features. Branch names reserve these work areas and do not imply they are already implemented.
 
 ## Verification
 
