@@ -1,7 +1,8 @@
 import { initialProjects } from '../data/projects.js';
+import { mediaProjects } from '../data/projectMedia.js';
 
 const KEY = 'portfolio-projects-v1';
-const VERSION = 3;
+const VERSION = 4;
 const personalProjects = initialProjects.filter(project => !project.isSample);
 const sampleIds = new Set(initialProjects.filter(project => project.isSample).map(project => project.id));
 
@@ -27,6 +28,11 @@ function persistMigration(projects) {
   return projects;
 }
 
+function addMediaProjects(projects) {
+  const savedIds = new Set(projects.map(project => project.id));
+  return [...projects, ...mediaProjects.filter(project => !savedIds.has(project.id))];
+}
+
 export function getProjects() {
   try {
     const value = JSON.parse(localStorage.getItem(KEY));
@@ -34,9 +40,12 @@ export function getProjects() {
       // A versioned save is authoritative, including intentional deletions.
       return value.projects;
     }
+    if (value?.version === 3 && isProjectList(value.projects)) {
+      return persistMigration(addMediaProjects(value.projects));
+    }
     if (value?.version === 2 && isProjectList(value.projects)) {
       // Earlier versioned saves retain their order and intentional deletions.
-      return persistMigration(migrateTechnologyList(value.projects));
+      return persistMigration(addMediaProjects(migrateTechnologyList(value.projects)));
     }
     if (isProjectList(value)) {
       const savedIds = new Set(value.map(project => project.id));
