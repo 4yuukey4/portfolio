@@ -1,0 +1,5 @@
+Tool mode: Built-in image_gen.
+Use case: background-extraction.
+
+Final prompt:
+Use case: background-extraction. Edit target: the supplied portrait photograph of Yusuf Abdi Hassan. Remove ONLY the gray studio background to make a clean photographic cutout on a genuinely transparent alpha background for a minimalist developer portfolio. Preserve the exact same person, face, facial structure, expression, eyes, hair and fine curls, skin tone, lighting, clothing, blazer, gray shirt, pose, and original torso framing. Do not retouch, beautify, regenerate or change the subject. Preserve natural fine hair edge detail with clean transparent edges, no gray fringe. Include all of the original visible subject without clipping hair or shoulders. Tightly frame the visible subject with a small transparent margin around head and sides; retain the original crop at bottom of torso. No background, no added shadow, no text, no border, no watermark. Output a transparent PNG asset.

@@ -1,0 +1,42 @@
+.project-placeholder {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:11px;
+  width:100%;
+  min-height:150px;
+  background:var(--card);
+  color:var(--muted);
+  text-align:center;
+  padding:25px;
+}
+.project-placeholder > svg {color:#a3a3a3;margin-bottom:3px}
+.project-placeholder strong {font-size:12px;font-weight:450;letter-spacing:.1px}
+.project-placeholder > span {font-size:10px;color:var(--muted)}
+.project-image > .project-placeholder {height:100%;min-height:0}
+.project-links {flex-wrap:wrap;row-gap:12px}
+.project-links .pending-link,.pending-link {display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:10px;cursor:default}
+.pending-link.button {font-size:11px;opacity:.7;transform:none;white-space:nowrap}
+.project-card .project-heading {align-items:flex-start}
+.project-heading > a {min-width:0}
+.project-number {flex-shrink:0;padding-top:6px}
+.project-card h3 {overflow-wrap:anywhere}
+.sample-project-label {display:inline-block;font-size:9px;color:var(--muted);margin-top:8px;letter-spacing:.3px}
+.tags .unspecified-tech {border-style:dashed;background:transparent}
+.detail-cover.project-placeholder {aspect-ratio:2/1;min-height:220px}
+.detail-heading > div:first-child {min-width:0}
+.details .detail-heading h1 {font-size:clamp(32px,4.2vw,55px);overflow-wrap:anywhere}
+.detail-links {flex-shrink:0;flex-wrap:wrap}
+.detail-copy .missing-project-info {margin-top:0}
+.gallery-empty {display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px dashed var(--border);border-radius:6px;background:var(--card);padding:46px 25px;margin-top:25px;text-align:center;color:var(--muted)}
+.gallery-empty h3 {font-size:15px;color:var(--text);margin-top:14px}
+.gallery-empty p {font-size:12px;line-height:1.7;margin-top:8px}
+.gallery .project-placeholder {min-height:200px}
+.admin-row > .project-placeholder {width:115px;height:77px;min-height:0;flex-shrink:0;padding:8px;border:1px solid var(--border);border-radius:4px;gap:5px}
+.admin-row > .project-placeholder > svg {width:20px;height:20px;margin:0}
+.admin-row > .project-placeholder strong {font-size:8px}
+.admin-row > .project-placeholder > span {display:none}
+.lightbox > .project-placeholder {max-width:80%;max-height:80vh;min-height:250px}
+@media(max-width:1100px){.detail-heading{align-items:flex-start}.detail-links{flex-direction:column}.project-heading{flex-wrap:wrap;gap:4px 12px}.project-heading>.project-number{padding-top:0}}
+@media(max-width:600px){.project-placeholder{padding:20px}.details .detail-heading h1{font-size:36px}.detail-links{flex-direction:row;gap:8px}.detail-cover.project-placeholder{aspect-ratio:1.5;min-height:180px}.admin-row>.project-placeholder{width:85px;height:60px}.admin-row>.project-placeholder strong{font-size:7px}.project-card .project-number{font-size:8px}}
