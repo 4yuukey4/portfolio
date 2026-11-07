@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, ImagePlus, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ProjectCard, ProjectImage, ProjectResourceLink } from '../components/UI';
+import { projectMedia, projectVideos } from '../data/projectMedia';
 
 export function Projects({projects}) {
   const [category,setCategory] = useState('All projects');
@@ -13,7 +14,7 @@ export function Projects({projects}) {
   return <section className="container page-section">
     <div className="eyebrow">THE PROJECT ARCHIVE</div>
     <h1>Ideas, made real.</h1>
-    <p className="page-description">Personal projects exploring desktop AI, reading, and natural-sounding audio.<br/>Built with curiosity, presented with care.</p>
+    <p className="page-description">Personal projects exploring desktop AI, audio, games, and 3D modeling.<br/>Screenshots and recordings bring the work into focus.</p>
     <div className="filter-bar">
       <div className="filter-tabs">
         {['All projects',...new Set(projects.map(p=>p.category))].map(c => <button key={c} className={category===c?'selected':''} onClick={()=>setCategory(c)}>{c}</button>)}
@@ -34,6 +35,8 @@ export function ProjectDetails({projects}) {
   useEffect(() => setActive(null), [id]);
   if (!p) return <NotFound/>;
   const images = p.screenshots.filter(Boolean);
+  const captionFor = src => projectMedia[p.id]?.find(item => item.src === src);
+  const video = projectVideos[p.id];
   const hasStatus = p.status && p.status !== 'Not specified';
   return <section className="container page-section details">
     <Link className="subtle-link" to="/projects"><ArrowLeft size={15}/> Back to projects</Link>
@@ -61,9 +64,26 @@ export function ProjectDetails({projects}) {
         {!!p.date && <><div className="eyebrow">PROJECT DATE</div><p>{p.date}</p></>}
       </aside>
     </div>
+    {video && <section className="project-video" aria-labelledby="video-heading">
+      <h2 id="video-heading">See it in motion</h2>
+      <figure>
+        <video controls playsInline preload="none" poster={video.poster} aria-label={video.title}>
+          <source src={video.src} type="video/mp4"/>
+          Your browser does not support embedded video. <a href={video.src}>Open gameplay recording</a>.
+        </video>
+        <figcaption><h3>{video.title}</h3><p>{video.description}</p><a className="subtle-link" href={video.src}>Open recording</a></figcaption>
+      </figure>
+    </section>}
     <h2>A closer look</h2>
     {images.length ? <div className="gallery">
-      {images.map((s,i)=><button key={i} onClick={()=>setActive(i)} aria-label={`Enlarge screenshot ${i+1}`}><ProjectImage src={s} title={`${p.title} screenshot ${i+1}`} loading="lazy"/></button>)}
+      {images.map((s,i)=>{
+        const caption = captionFor(s);
+        const title = caption?.title || `${p.title} screenshot ${i+1}`;
+        return <figure key={s}>
+          <button onClick={()=>setActive(i)} aria-label={`Enlarge ${title}`}><ProjectImage src={s} title={title} loading="lazy"/></button>
+          {caption && <figcaption><h3>{caption.title}</h3><p>{caption.description}</p></figcaption>}
+        </figure>;
+      })}
     </div> : <div className="gallery-empty">
       <ImagePlus size={24} strokeWidth={1.2} aria-hidden="true"/>
       <h3>No screenshots yet</h3>
@@ -76,7 +96,10 @@ export function ProjectDetails({projects}) {
     }}>
       <button autoFocus className="lightbox-close" aria-label="Close image" onClick={()=>setActive(null)}><X/></button>
       <button aria-label="Previous screenshot" onClick={e=>{e.stopPropagation();setActive((active+images.length-1)%images.length);}}><ChevronLeft/></button>
-      <ProjectImage src={images[active]} title="Enlarged screenshot" onClick={e=>e.stopPropagation()}/>
+      <figure className="lightbox-figure" onClick={e=>e.stopPropagation()}>
+        <ProjectImage src={images[active]} title={captionFor(images[active])?.title || `${p.title} screenshot ${active+1}`}/>
+        <figcaption>{active+1} / {images.length}{captionFor(images[active]) && <> — {captionFor(images[active]).title}<p>{captionFor(images[active]).description}</p></>}</figcaption>
+      </figure>
       <button aria-label="Next screenshot" onClick={e=>{e.stopPropagation();setActive((active+1)%images.length);}}><ChevronRight/></button>
     </div>}
   </section>;

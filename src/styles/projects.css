@@ -38,5 +38,21 @@
 .admin-row > .project-placeholder strong {font-size:8px}
 .admin-row > .project-placeholder > span {display:none}
 .lightbox > .project-placeholder {max-width:80%;max-height:80vh;min-height:250px}
+.filter-tabs {flex-wrap:wrap}
+.gallery figure,.project-video figure {margin:0;min-width:0}
+.gallery button {display:block;width:100%;background:var(--soft)}
+.gallery button img {width:100%;height:280px;object-fit:contain}
+.gallery figcaption {padding:16px 2px 10px}
+.gallery figcaption h3,.project-video figcaption h3 {font-size:15px;line-height:1.5}
+.gallery figcaption p,.project-video figcaption p {font-size:12px;margin-top:6px}
+.project-video {margin-bottom:55px}
+.project-video video {display:block;width:100%;max-height:70vh;background:#151515;border-radius:7px;border:1px solid var(--border);margin-top:25px}
+.project-video figcaption {margin-top:16px}
+.project-video figcaption a {margin-top:12px}
+.lightbox-figure {margin:0;width:min(100%,1100px);min-width:0;text-align:center;color:#fff}
+.lightbox .lightbox-figure img {margin:auto;max-width:100%;max-height:72vh;object-fit:contain}
+.lightbox-figure figcaption {font-size:13px;margin-top:16px;line-height:1.6}
+.lightbox-figure p {color:#ddd;font-size:12px;margin-top:4px}
+@media(max-width:600px){.gallery button img{height:auto;max-height:340px}.lightbox-figure figcaption{font-size:11px}.lightbox-figure p{font-size:10px}.lightbox .lightbox-figure img{max-width:100%}.lightbox{gap:8px}.project-video{margin-bottom:35px}}
 @media(max-width:1100px){.detail-heading{align-items:flex-start}.detail-links{flex-direction:column}.project-heading{flex-wrap:wrap;gap:4px 12px}.project-heading>.project-number{padding-top:0}}
 @media(max-width:600px){.project-placeholder{padding:20px}.details .detail-heading h1{font-size:36px}.detail-links{flex-direction:row;gap:8px}.detail-cover.project-placeholder{aspect-ratio:1.5;min-height:180px}.admin-row>.project-placeholder{width:85px;height:60px}.admin-row>.project-placeholder strong{font-size:7px}.project-card .project-number{font-size:8px}}

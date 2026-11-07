@@ -33,6 +33,20 @@ Open the printed local URL. `npm run build` creates `dist/`; `npm run preview` s
 
 ## Manage projects and images
 
+### Project galleries
+
+The supplied media is grouped into five dedicated pages. Image titles, captions, project descriptions, and video metadata live in `src/data/projectMedia.js`. Optimized JPG screenshots and the MP4 recording live under `public/images/projects/`; original Desktop files are unchanged.
+
+| Page | Media |
+| --- | --- |
+| `/projects/novelvoice-studio` | 7 screenshots of the manuscript, dashboard, transcription, voice library, projects, exports, and desktop workspace |
+| `/projects/mini-factory-frontier` | 5 screenshots of the world, resources, prototype, and production lines |
+| `/projects/flame-keep` | 6 screenshots and a roughly one-minute gameplay recording |
+| `/projects/factory-market` | 2 screenshots of warehouse placement and validation |
+| `/projects/blender-conveyor` | 1 screenshot of a Blender conveyor modeling study |
+
+NovelVoice Studio uses the name visible in the supplied screenshots and is kept separate from NovelReader and VoiceMaker until their relationship is confirmed. The GitHub device authorization screenshot is excluded because it is not project showcase material. Version 4 storage migration adds these five new entries once while preserving existing edits, uploads, project order, and deletions of earlier projects. Subsequent deletions of the new entries are also retained.
+
 In development, visit `/admin`. Add, edit, delete (with confirmation), or reorder projects. Upload a cover image and multiple screenshots; remove screenshots individually. Images accept PNG, JPEG, WebP, and GIF up to 2 MB each. Prefer compressed images well below that limit, as total browser storage is usually only a few MB. Storage failures leave the editor open and display an error.
 
 The editor saves projects and image data URLs in **this browser’s LocalStorage**. Changes survive reloads but are browser and origin specific. They do not change the source files, synchronize across devices, or publish for other visitors. Clearing site storage removes these edits. Existing saved project lists are migrated once to include the three personal projects while preserving your edits and uploaded images. Later deletions and reordering remain saved. For public updates, put optimized images under `public/images/` and copy your project content into `src/data/projects.js` before rebuilding.
