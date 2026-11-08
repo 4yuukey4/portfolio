@@ -39,7 +39,7 @@ The supplied media is grouped into five dedicated pages. Image titles, captions,
 
 | Page | Media |
 | --- | --- |
-| `/projects/novelvoice-studio` | 7 screenshots of the manuscript, dashboard, transcription, voice library, projects, exports, and desktop workspace |
+| `/projects/novelvoice-studio` | 6 screenshots of the manuscript, dashboard, transcription, voice library, projects, and exports |
 | `/projects/mini-factory-frontier` | 5 screenshots of the world, resources, prototype, and production lines |
 | `/projects/flame-keep` | 6 screenshots and a roughly one-minute gameplay recording |
 | `/projects/factory-market` | 2 screenshots of warehouse placement and validation |

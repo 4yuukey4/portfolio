@@ -10,8 +10,7 @@ export const projectMedia = {
     image('novelvoice-studio', 'transcription', 'Transcription Studio', 'Recording import and language selection for local Whisper transcription with editable segments.'),
     image('novelvoice-studio', 'voice-library', 'Voice Library', 'Browse reference voices or import and record a voice sample, with transcript and consent fields.'),
     image('novelvoice-studio', 'projects', 'Project library', 'Saved manuscript projects grouped into cards with character counts and edit dates.'),
-    image('novelvoice-studio', 'audio-exports', 'Audio exports', 'A library of generated audiobook files with options to save them to a local folder.'),
-    image('novelvoice-studio', 'desktop-app', 'Desktop workspace', 'The NovelVoice Studio desktop window, bringing manuscript, narration, and export tools together.')
+    image('novelvoice-studio', 'audio-exports', 'Audio exports', 'A library of generated audiobook files with options to save them to a local folder.')
   ],
   'mini-factory-frontier': [
     image('mini-factory-frontier', 'frontier-overview', 'The open frontier', 'A resource-rich world with a minimap, production overview, and a toolbar for factory equipment.'),
